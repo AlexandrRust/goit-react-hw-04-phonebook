@@ -31,7 +31,6 @@ const Input = styled(Field)`
 
 export const PhoneBookForm = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     const { name, number } = values;
     onSubmit({ name, number });
     resetForm();
