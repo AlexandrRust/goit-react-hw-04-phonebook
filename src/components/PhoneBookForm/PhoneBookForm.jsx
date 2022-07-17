@@ -1,5 +1,5 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import styled from 'styled-components';
+import { Formik, ErrorMessage } from 'formik';
+import { PhoneForm, Input } from './PhoneBookForm.styled';
 import { Label } from 'components/Label/Label.styled';
 import { FirstButton } from 'components/buttons/FirstButton.styled';
 import * as yup from 'yup';
@@ -13,21 +13,6 @@ const initialValues = {
   name: '',
   number: '',
 };
-
-const PhoneForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  border: 1px, solid, black;
-`;
-
-const Input = styled(Field)`
-  display: block;
-  margin-top: 15px;
-  border-color: gray;
-  border-radius: 5px;
-  font-size: 16px;
-`;
 
 export const PhoneBookForm = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {

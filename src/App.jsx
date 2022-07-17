@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { useState, useEffect } from 'react';
+import { PhoneBookData } from 'data/phoneBookData';
 import { PhoneBookForm } from 'components/PhoneBookForm/PhoneBookForm';
 import { Section } from 'components/Section/Section.styled';
 import { Box } from 'components/Box/Box.styled';
@@ -9,15 +10,14 @@ import { PhonesList } from 'components/PhonesList/PhonesList';
 import { Filter } from 'components/Filter/Filter';
 
 export default function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts')) ?? [
-      { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
-      { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
-      { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
-      { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
-    ]
-  );
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    setContacts(
+      PhoneBookData ?? JSON.parse(window.localStorage.getItem('contacts'))
+    );
+  }, []);
 
   const formSubmitHandler = ({ name, number }) => {
     if (contacts.find(elem => elem.name.toLowerCase() === name.toLowerCase())) {
