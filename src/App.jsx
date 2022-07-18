@@ -10,14 +10,10 @@ import { PhonesList } from 'components/PhonesList/PhonesList';
 import { Filter } from 'components/Filter/Filter';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    JSON.parse(window.localStorage.getItem('contacts')) ?? []
+  );
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    setContacts(
-      PhoneBookData ?? JSON.parse(window.localStorage.getItem('contacts'))
-    );
-  }, []);
 
   const formSubmitHandler = ({ name, number }) => {
     if (contacts.find(elem => elem.name.toLowerCase() === name.toLowerCase())) {
