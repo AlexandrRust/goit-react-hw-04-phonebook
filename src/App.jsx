@@ -1,7 +1,6 @@
 import { nanoid } from 'nanoid';
 
 import { useState, useEffect } from 'react';
-import { PhoneBookData } from 'data/phoneBookData';
 import { PhoneBookForm } from 'components/PhoneBookForm/PhoneBookForm';
 import { Section } from 'components/Section/Section.styled';
 import { Box } from 'components/Box/Box.styled';
